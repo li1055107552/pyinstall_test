@@ -46,9 +46,8 @@ jobs:
       run: |
         git fetch --all
         git reset --hard origin/dist-update
-        # cp -r ../dist/ dist/
-        ls
-        # git add dist/
-        # git commit -m "Update dist"
-        # git push -u origin HEAD:dist-update --force
+        cp -r ../dist/ dist/
+        git add dist/
+        git commit -m "Update dist"
+        git push -u origin HEAD:dist-update --force
 
