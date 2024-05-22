@@ -14,8 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        # os: [ubuntu-latest]
+        # os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
     - name: pyinstaller
       run: |
         pyinstaller --name dialog-${{ matrix.os }} -F dialog.py
-        mv dist dist-${{ matrix.os }}/dist
+        mv dist ../dist
     # - name: Upload artifact
     #   uses: actions/upload-artifact@v2
     #   with:
@@ -42,11 +42,11 @@ jobs:
         git config --global user.name 'li1055107552'
         git config --global user.email 'li1055107552@163.com'
       
-    - name: Sync dist to GitHub
-      run: |
-        git add dist-*
-        git checkout -b dist-update
-        git commit -m "Update dist"
-        git push -u origin HEAD:dist-update --force
-        # git push -u origin HEAD:dist-update
+    # - name: Sync dist to GitHub
+    #   run: |
+    #     git add dist/
+    #     git checkout -b dist-update
+    #     git commit -m "Update dist"
+    #     git push -u origin HEAD:dist-update --force
+    #     # git push -u origin HEAD:dist-update
 
