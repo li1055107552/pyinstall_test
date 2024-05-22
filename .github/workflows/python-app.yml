@@ -32,3 +32,8 @@ jobs:
       run: |
         # stop the build if there are Python syntax errors or undefined names
         pyinstaller -F dialog.py
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: executable
+        path: dist/
