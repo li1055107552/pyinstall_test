@@ -30,6 +30,7 @@ jobs:
     - name: pyinstaller
       run: |
         pyinstaller --name dialog-${{ matrix.os }} -F dialog.py
+        mv dist dist-${{ matrix.os }}/dist
     # - name: Upload artifact
     #   uses: actions/upload-artifact@v2
     #   with:
@@ -43,9 +44,9 @@ jobs:
       
     - name: Sync dist to GitHub
       run: |
-        git add dist/
+        git add dist-*
         git checkout -b dist-update
         git commit -m "Update dist"
-        # git push -u origin HEAD:dist-update --force
-        git push -u origin HEAD:dist-update
+        git push -u origin HEAD:dist-update --force
+        # git push -u origin HEAD:dist-update
 
