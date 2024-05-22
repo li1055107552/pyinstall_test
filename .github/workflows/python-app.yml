@@ -14,8 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest, windows-latest]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        # os: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -46,8 +46,8 @@ jobs:
       run: |
         git fetch --all
         git reset --hard origin/dist-update
-        cp -r ../dist/* dist/*
-        git add dist/*
+        cp -r ../dist/ ./
+        git add dist
         git commit -m "Update dist"
         git push -u origin HEAD:dist-update --force
 
