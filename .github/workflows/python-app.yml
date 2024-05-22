@@ -29,18 +29,18 @@ jobs:
         pip install pyinstaller pytest
     - name: pyinstaller
       run: |
-        pyinstaller --name dialog_${{ matrix.os }} -F dialog.py
+        pyinstaller --name dialog-${{ matrix.os }} -F dialog.py
     # - name: Upload artifact
     #   uses: actions/upload-artifact@v2
     #   with:
     #     name: dialog
     #     path: dist/
 
-    - name: Configure Git
-      run: |
-        git config --global user.name 'li1055107552'
-        git config --global user.email 'li1055107552@163.com'
-        git config --global --add safe.directory /github/workspace
+    # - name: Configure Git
+    #   run: |
+    #     git config --global user.name 'li1055107552'
+    #     git config --global user.email 'li1055107552@163.com'
+    #     git config --global --add safe.directory /github/workspace
       
     - name: Sync dist to GitHub
       run: |
@@ -49,8 +49,8 @@ jobs:
         git commit -m "Update dist"
         # git push origin HEAD:dist-update
         git push -u origin HEAD:main --force
-      env:
-        GH_PAT: ${{ secrets.GH_PAT }}
+      # env:
+      #   GH_PAT: ${{ secrets.GH_PAT }}
 
     # - name: Create Pull Request
     #   uses: peter-evans/create-pull-request@v3
