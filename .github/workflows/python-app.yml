@@ -42,11 +42,12 @@ jobs:
         git config --global user.name 'li1055107552'
         git config --global user.email 'li1055107552@163.com'
       
-    # - name: Sync dist to GitHub
-    #   run: |
-    #     git add dist/
-    #     git checkout -b dist-update
-    #     git commit -m "Update dist"
-    #     git push -u origin HEAD:dist-update --force
-    #     # git push -u origin HEAD:dist-update
+    - name: Sync dist to GitHub
+      run: |
+        git checkout -b dist-update
+        git pull origin dist-update
+        cp -r ../dist/ dist/
+        git add dist/
+        git commit -m "Update dist"
+        git push -u origin HEAD:dist-update --force
 
