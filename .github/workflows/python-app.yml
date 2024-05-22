@@ -36,10 +36,10 @@ jobs:
     #     name: dialog
     #     path: dist/
 
-    # - name: Configure Git
-    #   run: |
-    #     git config --global user.name 'li1055107552'
-    #     git config --global user.email 'li1055107552@163.com'
+    - name: Configure Git
+      run: |
+        git config --global user.name 'li1055107552'
+        git config --global user.email 'li1055107552@163.com'
     #     git config --global --add safe.directory /github/workspace
       
     - name: Sync dist to GitHub
@@ -48,7 +48,7 @@ jobs:
         git checkout -b dist-update
         git commit -m "Update dist"
         # git push origin HEAD:dist-update
-        git push -u origin HEAD:main --force
+        git push -u origin HEAD:dist-update --force
       # env:
       #   GH_PAT: ${{ secrets.GH_PAT }}
 
