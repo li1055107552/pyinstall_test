@@ -41,11 +41,8 @@ jobs:
       
     - name: Sync dist to GitHub
       run: |
+        git add .
         git checkout -b dist-update
-        mkdir ../dist
-        mkdir -p dist
-        cp -r dist/* ../dist/
-        git add ../dist/
         git commit -m "Update dist"
         git push origin HEAD:dist-update --force
       env:
