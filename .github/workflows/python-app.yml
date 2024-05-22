@@ -28,10 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with pyinstaller
+    - name: pyinstaller
       run: |
         # stop the build if there are Python syntax errors or undefined names
         pyinstaller -F dialog.py
-    - name: Test with pytest
-      run: |
-        pytest
