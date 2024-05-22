@@ -44,8 +44,8 @@ jobs:
       
     - name: Sync dist to GitHub
       run: |
-        git checkout -b dist-update
-        git pull origin dist-update
+        git fetch --all
+        git reset --hard origin/<dist-update>
         cp -r ../dist/ dist/
         git add dist/
         git commit -m "Update dist"
