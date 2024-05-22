@@ -41,17 +41,17 @@ jobs:
       
     - name: Sync dist to GitHub
       run: |
-        git add .
+        git add dist/
         git checkout -b dist-update
         git commit -m "Update dist"
         git push origin HEAD:dist-update --force
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_PAT: ${{ secrets.GH_PAT }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_PAT }}
         commit-message: Update dist
         branch: dist-update
         base: main
