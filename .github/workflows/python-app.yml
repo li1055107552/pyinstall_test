@@ -46,5 +46,6 @@ jobs:
         git add dist/
         git checkout -b dist-update
         git commit -m "Update dist"
-        git push -u origin HEAD:dist-update --force
+        # git push -u origin HEAD:dist-update --force
+        git push origin HEAD:dist-update
 
